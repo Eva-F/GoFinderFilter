@@ -95,6 +95,9 @@ Pri hrozbe prekroceni tohoto limitu pri ukladani vysledku se na pocatku rolovani
 ![localstoragefull](https://user-images.githubusercontent.com/3242659/218758981-34aa13cb-2018-48da-9810-46423df0f798.png)
 
 jak je z obr.patrne, abonenty na smazani jsou zridka vyhledavane terminy, popr. ty, jejichz velikost (vpravo) neni prilis velka - coz znaci, ze seznam neni prilis dlouhy a da se procist rychle
+Pokud jste si jisti, ze vysledek hledani se do localStorage vejde ( existujici filter je prepsan, takze velikost LocalStorage se prilis nezmeni), nemusite oznacovat nic
+
+
 
  
 
