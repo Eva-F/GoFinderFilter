@@ -94,8 +94,17 @@ Pri hrozbe prekroceni tohoto limitu pri ukladani vysledku se na pocatku rolovani
 (vysledky jsou ukladany ve tvaru ``searchstring_minSize_maxSize`` 
 ![localstoragefull](https://user-images.githubusercontent.com/3242659/218758981-34aa13cb-2018-48da-9810-46423df0f798.png)
 
-jak je z obr.patrne, abonenty na smazani jsou zridka vyhledavane terminy, popr. ty, jejichz velikost (vpravo) neni prilis velka - coz znaci, ze seznam neni prilis dlouhy a da se procist rychle
+jak je z obr.patrne, abonenty na smazani jsou zridka vyhledavane terminy, popr. ty, jejichz velikost (vpravo) neni prilis velka - coz znaci, ze seznam neni prilis dlouhy a da se procist rychle.
+
 Pokud jste si jisti, ze vysledek hledani se do localStorage vejde ( existujici filter je prepsan, takze velikost LocalStorage se prilis nezmeni), nemusite oznacovat nic
+
+
+
+**Poznamka**
+- script neni dokonaly, ale setri cas.
+- Captcha je typu google-recaptcha a i kdyz existuji navody, jak se zbavit toho otravneho klikani (plugin do Chrome, ci koupit si API key na Recaptcha a obejit ho - tak ani jeden mi neprisel idealni)
+
+
 
 
 
