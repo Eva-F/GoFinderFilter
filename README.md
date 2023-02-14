@@ -17,10 +17,12 @@ script je urcen pro vyhledavani v uloz.to pomoci Gofinderu
 **Jak pracovat se scriptem (napr.v Chrome)**
 - na strance GoFinderu otevrete devTools (**Ctrl+Shift+J**)
 
-- umistete devTools okno bud po prave strane ci do samostatneho okna 
+- umistete devTools okno bud po prave strane ci do samostatneho okna
+-  
   ![devTools](https://user-images.githubusercontent.com/3242659/218735620-16a2d9e6-9020-444c-b514-547fc855139e.png)
   
 - kliknete na zalozku "Source", pote na "Snippets" a vytvorte novy snippet
+- 
   ![devToolsSnippets](https://user-images.githubusercontent.com/3242659/218737226-dccaac05-9106-4f13-89c7-2c7334372c26.png)
   
 - pojmenujte Snippet podle typu hledani napr. "GoFinderFilter_Audiokniha" (vysledky hledani se ukladaji v lokalnim ulozisti(=localStorage) a hodnoty ulozene v localStorage nemaji expiraci a  pretrvavaji i po ukonceni browseru )
@@ -44,7 +46,7 @@ script je urcen pro vyhledavani v uloz.to pomoci Gofinderu
 - Rolovani je ukonceno, pokud GoFinder odesle vsechny sve odkazy ( v pripade dlouheho seznamu to seka (tusim na max 400 vysledku))
   ![GoFinderFinish](https://user-images.githubusercontent.com/3242659/218745235-3d1b58e2-30d7-4f4b-8eeb-807b49750aaf.png)
   
-- kliknete kamkoli (do volne potemele plochy)
+- kliknete kamkoli (do volne potemnele plochy)
 
 - a na nasledujici strance se vygeneruji vysledky filtrace
   - pokud se jedna o prvni spusteni vyhledavani searchstringu pres snippet, zobrazi se vsechny linky, ktere odpovidaji vstupnim parametrum (velikost od-do + exclude strings) - ty doporucuji procist ( jsou razeny abecedne, jsou nacteny vsechny na jedne strance, takze je mozne i vyhledavat pomoci Ctrl+F)
@@ -91,6 +93,7 @@ jednotlive parametry:
 Pri hrozbe prekroceni tohoto limitu pri ukladani vysledku se na pocatku rolovani objevi moznost promazani ulozenych vysledku v localStorage.
 (vysledky jsou ukladany ve tvaru ``searchstring_minSize_maxSize`` 
 ![localstoragefull](https://user-images.githubusercontent.com/3242659/218758981-34aa13cb-2018-48da-9810-46423df0f798.png)
+
 jak je z obr.patrne, abonenty na smazani jsou zridka vyhledavane terminy, popr. ty, jejichz velikost (vpravo) neni prilis velka - coz znaci, ze seznam neni prilis dlouhy a da se procist rychle
 
  
