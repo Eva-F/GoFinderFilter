@@ -30,7 +30,7 @@ var orderedrefs;
 var orderednewrefs;
 var scrolled;
 var cntscrolled = 0;
-var reversescroll = 0;
+var reversescroll=0;
 var res;
 var modalclosed = false;
 
@@ -580,33 +580,34 @@ function pageScroll() {
             return;
         } else {
             if (document.getElementsByClassName('captcha').length == 0) {
-                cntscrolled++;
+              cntscrolled++;    
             } else {
-                reversescroll += ascrollsize;
+              reversescroll+=ascrollsize;
+                cntscrolled=0;
             }
-
+            
         }
     }
     scrolled = false;
     var reversed = false;
-    if (document.getElementsByClassName('captcha').length == 0 && reversescroll > 0) {
-        window.scrollBy(0, -reversescroll);
-        reversescroll = 0;
-        reversed = true;
-    } else {
+     if (document.getElementsByClassName('captcha').length == 0 && reversescroll>0 ) {
+         window.scrollBy(0, -reversescroll);
+         reversescroll = 0;
+         reversed = true;
+     } else {    
         window.scrollBy(0, ascrollsize);
-    }
+     }
     if (!reversed) {
-        res = main.children[0].children[main.children[0].childElementCount - 2].lastElementChild;
-        if (res !== null && res.style.transform != '' && res.style.transform.indexOf('translateY') >= 0) {
-            var trY = parseInt(res.style.transform.replace('translateY(', ''))
-            console.log(trY);
-            if (trY + res.offsetHeight + 100 > main.offsetHeight) {
-                console.log('konec ' + trY + main.offsetHeight);
-                runGenerateOutput();
-                return;
-            }
+    res = main.children[0].children[main.children[0].childElementCount - 2].lastElementChild;
+    if (res !== null && res.style.transform != '' && res.style.transform.indexOf('translateY') >= 0) {
+        var trY = parseInt(res.style.transform.replace('translateY(', ''))
+        console.log(trY);
+        if (trY + res.offsetHeight + 100 > main.offsetHeight) {
+            console.log('konec ' + trY + main.offsetHeight);
+            runGenerateOutput();
+            return;
         }
+    }
     }
     scrolldelay = setTimeout(pageScroll, ascrolltimeout);
 }
