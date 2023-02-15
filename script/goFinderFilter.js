@@ -480,7 +480,7 @@ function generateOutputAfterClick(event) {
             if (newrefs[ititle][i]['i'] !== '') {
                 im = newrefs[ititle][i]['i'].replace('<img', '<img style="width: 100px!important;" ');
             }
-            refsdocument.write('<tr><td>' + im + '</td><td style="white-space:break-spaces"><a href="' + newrefs[ititle][i]['l'] + '">' + ititle + '</a></td><td>' + newrefs[ititle][i]['s'] + ' </td></tr>');
+            refsdocument.write('<tr><td>' + im + '</td><td style="white-space:break-spaces"><a href="' + newrefs[ititle][i]['l'] + '" target="_blank">' + ititle + '</a></td><td>' + newrefs[ititle][i]['s'] + ' </td></tr>');
         }
     }
     orderednewrefs = [];
@@ -497,7 +497,7 @@ function generateOutputAfterClick(event) {
         if (typeof refs[ititle] == 'undefined') {
             for (var i = 0; i < searchedrefs[ititle].length; i++) {
 
-                refsdocument.write('<tr><td></td><td style="white-space:break-spaces"><a href="' + searchedrefs[ititle][i]['l'] + '">' + ititle + '</a></td><td>' + searchedrefs[ititle][i]['s'] + ' </td></tr>');
+                refsdocument.write('<tr><td></td><td style="white-space:break-spaces"><a href="' + searchedrefs[ititle][i]['l'] + '" target="_blank">' + ititle + '</a></td><td>' + searchedrefs[ititle][i]['s'] + ' </td></tr>');
             }
         }
     }
@@ -514,7 +514,7 @@ function generateOutputAfterClick(event) {
     for (var ii = 0; ii < orderedrefs.length; ii++) {
         ititle = orderedrefs[ii];
         for (var i = 0; i < refs[ititle].length; i++) {
-            refsdocument.write('<tr><td><a href="' + refs[ititle][i]['l'] + '">' + ititle + '</a></td><td>' + refs[ititle][i]['s'] + ' </td></tr>');
+            refsdocument.write('<tr><td><a href="' + refs[ititle][i]['l'] + '"  target="_blank">' + ititle + '</a></td><td>' + refs[ititle][i]['s'] + ' </td></tr>');
         }
     }
     orderedrefs = [];
@@ -580,12 +580,12 @@ function pageScroll() {
             return;
         } else {
             if (document.getElementsByClassName('captcha').length == 0) {
-              cntscrolled++;    
+              cntscrolled++;
             } else {
               reversescroll+=ascrollsize;
                 cntscrolled=0;
             }
-            
+
         }
     }
     scrolled = false;
@@ -594,7 +594,7 @@ function pageScroll() {
          window.scrollBy(0, -reversescroll);
          reversescroll = 0;
          reversed = true;
-     } else {    
+     } else {
         window.scrollBy(0, ascrollsize);
      }
     if (!reversed) {
