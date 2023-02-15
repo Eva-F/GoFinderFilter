@@ -1,6 +1,6 @@
-# GoFinderFilter for uloz.to
+# GozoFinderFilter for uloz.to
 
-tento script je urcen pro zjednoduseni prace s GoFinder pro uloz.to
+tento script je urcen pro zjednoduseni prace s GozoFinder pro uloz.to
 
 **doporucene browsery:**
 - Chrome
@@ -9,13 +9,13 @@ tento script je urcen pro zjednoduseni prace s GoFinder pro uloz.to
 
 proste vsechny, ktere umoznuji ukladat js scripty do Snippets (Firefox umoznuje pracovat se snippet, ale neumi jej ukladat, takze se script musi kopirovat do FF snippetu po kazdym refresh stranky
 
-script je urcen pro vyhledavani v uloz.to pomoci Gofinderu 
+script je urcen pro vyhledavani v uloz.to pomoci GozoFinder 
 
 (t.j. link vypada nejak takto:
 [https://gozofinder.com/cse/ulozto/cz?query=audiokniha](https://gozofinder.com/cse/ulozto/cz?query=audiokniha) (kde search string = "audiokniha"))
 
 **Jak pracovat se scriptem (napr.v Chrome)**
-- na strance GoFinderu otevrete devTools (**Ctrl+Shift+J**)
+- na strance GozoFinder otevrete devTools (**Ctrl+Shift+J**)
 
 - umistete devTools okno bud po prave strane ci do samostatneho okna
 -  
@@ -39,9 +39,9 @@ script je urcen pro vyhledavani v uloz.to pomoci Gofinderu
 
   ![goFinderRun](https://user-images.githubusercontent.com/3242659/218742496-474f4680-6b8e-4804-8fdf-432f6c04bfe7.png)
   
-- odkazy odpovidajici search stringu budou postupne rolovat( to je nutne, aby se nacetly vsechny - gofinder provadi paging takze v jednom okamziku je nacteno max. 30 odkazu).
+- odkazy odpovidajici search stringu budou postupne rolovat( to je nutne, aby se nacetly vsechny - GozoFinder provadi paging takze v jednom okamziku je nacteno max. 30 odkazu).
 
-- v dobe rolovani se muzete venovat jine cinnosti - jen obas hodte okem na stranku GoFinderu, zda vam tam iniciativne nepodstrcil "Captcha"  - pokud ano, odklepnete, ze nejse bot a nechte ho pokracovat v rolovani.
+- v dobe rolovani se muzete venovat jine cinnosti - jen obas hodte okem na stranku GozoFinderu, zda vam tam iniciativne nepodstrcil "Captcha"  - pokud ano, odklepnete, ze nejse bot a nechte ho pokracovat v rolovani.
 
 - Rolovani je ukonceno, pokud GoFinder odesle vsechny sve odkazy ( v pripade dlouheho seznamu to seka (tusim na max 400 vysledku))
   ![GoFinderFinish](https://user-images.githubusercontent.com/3242659/218745235-3d1b58e2-30d7-4f4b-8eeb-807b49750aaf.png)
@@ -76,7 +76,7 @@ jednotlive parametry:
   seznam retezcu, ktere se nesmi vyskytovat ve vysledcich hledani 
   > pokud hledate pres archivy, dostane se do vysledku hledani dmnoho balastu - je mozne odfiltrovat nektere soubory
 - ``var gofinderlink = 'https://entry.gozofinder.com/redirect/';``  
-  tento parametr jsem zaradila, protoze goFinder se dost casto meni - predtim byl ``https://entry.gozofinder.com/redirect-hash/``
+  tento parametr jsem zaradila, protoze GozoFinder se dost casto meni - predtim byl ``https://entry.gozofinder.com/redirect-hash/``
 - ``var ascrolltimeout = 100;``
 - ``var ascrollsize = 250;``
   na techto dvou parametrech zalezi rychlost automatickeho rolovani 
@@ -84,7 +84,7 @@ jednotlive parametry:
   obdobne si lze pohrat i velikosti posunu scrolovani - plati to same jako pro timeout -
   cim mensi timeout (mel by byt urcite > 10ms) a cim vetsi scrollsize, tim rychleji se odroluji vsechny linky vyhovujici "search" -
   nicmene je treba vzit v potaz rychlost pripojeni, pocitace atd, aby nedoslo k tomu, ze se linky neprokresli - viz vyse
-  rolovani je nutny kvuli pagovani Gofinderu - nacte max. 30 linku a postupne umazava ty, ktere odrolovaly nahoru -
+  rolovani je nutny kvuli pagovani GozoFinder - nacte max. 30 linku a postupne umazava ty, ktere odrolovaly nahoru -
 
   
  **localStorage**
