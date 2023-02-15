@@ -103,6 +103,8 @@ Pokud jste si jisti, ze vysledek hledani se do localStorage vejde ( existujici f
 **Poznamka**
 - script neni dokonaly, ale setri cas.
 - Captcha je typu google-recaptcha a i kdyz existuji navody, jak se zbavit toho otravneho klikani (plugin do Chrome, ci koupit si API key na Recaptcha a obejit ho - tak ani jeden mi neprisel idealni)
+- Captcha je neprijemna, protoze pri jejim zobrazeni obcas utece par linku, ktere se nenactou - ty se pak objevi mezi chybejicimi - aby v nasledujicim spusteni scriptu se zaradily mezi nove - proto je vyhodne po zadani searchstringu provest take refresh stranky (v opacnem pripade se pocet linku scita a captcha otravuje  )
+
 
 
 
