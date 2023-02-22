@@ -460,8 +460,10 @@ function generateOutputAfterClick(event) {
         document.removeEventListener('click', generateOutputAfterClick);
     }
     scrollcontinue = false;
-
-    localStorage.setItem("refs_" + searchStr + '__' + minSize + '_' + maxSize, JSON.stringify(refs));
+    orderedrefs = Object.keys(refs).sort(Intl.Collator().compare);
+    if (orderedrefs.length > 0) {
+        localStorage.setItem("refs_" + searchStr + '__' + minSize + '_' + maxSize, JSON.stringify(refs));
+    }  
 
     refswindow = window.open();
     refsdocument = refswindow.document;
@@ -472,6 +474,9 @@ function generateOutputAfterClick(event) {
     var ahtml = '<table cellpadding="5px"><tr><th style="max-width:48px"></th><th style="max-width:85%">nazev</th><th>velikost</th></tr>';
     refsdocument.write(ahtml);
     orderednewrefs = Object.keys(newrefs).sort(Intl.Collator().compare);
+    orderedsearchedrefs = Object.keys(searchedrefs).sort(Intl.Collator().compare);
+    
+    
 
     for (var ii = 0; ii < orderednewrefs.length; ii++) {
         ititle = orderednewrefs[ii];
@@ -490,7 +495,7 @@ function generateOutputAfterClick(event) {
     refsdocument.write('<h1>Chybejici linky(smazane, nebo zastarale)</h1>');
     var ahtml = '<table cellpadding="5px"><tr><th style="max-width:48px"></th><th style="max-width:85%">nazev</th><th>velikost</th></tr>';
     refsdocument.write(ahtml);
-    orderedsearchedrefs = Object.keys(searchedrefs).sort(Intl.Collator().compare);
+    
 
     for (var ii = 0; ii < orderedsearchedrefs.length; ii++) {
         ititle = orderedsearchedrefs[ii];
@@ -510,7 +515,7 @@ function generateOutputAfterClick(event) {
     refsdocument.write('<h1>vsechny linky</h1>');
     var ahtml = '<table><tr><th>nazev</th><th>velikost</th></tr>';
     refsdocument.write(ahtml);
-    orderedrefs = Object.keys(refs).sort(Intl.Collator().compare);
+    
     for (var ii = 0; ii < orderedrefs.length; ii++) {
         ititle = orderedrefs[ii];
         for (var i = 0; i < refs[ititle].length; i++) {
@@ -572,7 +577,7 @@ function pageScroll() {
         return;
     }
     if (!scrolled) {
-        if (cntscrolled > 10) {
+        if (cntscrolled > 20) {
             cntscrolled = 0;
             scrollcontinue = false;
             runGenerateOutput();
@@ -597,18 +602,6 @@ function pageScroll() {
      } else {
         window.scrollBy(0, ascrollsize);
      }
-    if (!reversed) {
-    res = main.children[0].children[main.children[0].childElementCount - 2].lastElementChild;
-    if (res !== null && res.style.transform != '' && res.style.transform.indexOf('translateY') >= 0) {
-        var trY = parseInt(res.style.transform.replace('translateY(', ''))
-        console.log(trY);
-        if (trY + res.offsetHeight + 100 > main.offsetHeight) {
-            console.log('konec ' + trY + main.offsetHeight);
-            runGenerateOutput();
-            return;
-        }
-    }
-    }
     scrolldelay = setTimeout(pageScroll, ascrolltimeout);
 }
 
