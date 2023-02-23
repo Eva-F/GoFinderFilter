@@ -1,6 +1,6 @@
 var minSize = '100MB';     //pr. 100kB, 1.5GB (pozor, musi byt tecka jako desetinny oddelovac)
 var maxSize = '2GB';
-var excludestr = ['.part', '.log', 'The ', 'The.', 'Various', 'VA -', '.avi', '.mkv', '.ts', '.mp4', 'FLAC', 'zip.0', '7z.0'];
+var excludestr = ['.part', '.log', 'The ', '.avi', 'The.', '.pdf','Various', 'VA -', '.avi', '.mkv', '.ts', '.mp4', 'FLAC', 'zip.0', '7z.0'];
 var gofinderlink = 'https://entry.gozofinder.com/redirect/';  // nekdy jej meni - predtim byl https://entry.gozofinder.com/redirect-hash/
 var ascrolltimeout = 100;
 var ascrollsize = 250;
@@ -66,8 +66,25 @@ if (asize.substr(0, 1).toUpperCase() == 'M') {
     maxSizeB = maxSizeB * (1 << 40)
 }
 
+function searchStrFromLocalStorage(search) {
+    var s = ("refs_" + searchStr + '__' + minSize + '_' + maxSize);
+    for (key in localStorage) {
+        if (s == key) {
+            return key;
+        }
+    }
+    s = s.toLowerCase();
+    for (key in localStorage) {
+        if (s == key.toLowerCase()) {
+            return key;
+        }
+    }
+    return '';
+}
+
 var searchStr = document.querySelectorAll('input[type="search"]')[0].value;
-var searchedrefs = (localStorage.getItem("refs_" + searchStr + '__' + minSize + '_' + maxSize) == null) ? {} : JSON.parse(localStorage.getItem("refs_" + searchStr + '__' + minSize + '_' + maxSize));
+var localStorageKey = searchStrFromLocalStorage(searchStr);
+var searchedrefs = (localStorageKey == '') ? {} : JSON.parse(localStorage.getItem(localStorageKey));
 
 function numberWithCommas(x, replacechar) {
 
@@ -352,7 +369,7 @@ const readPage = () => {
         var atitle = ahrefs[i].getAttribute('title');
         var excludetitle = false;
         for (var l = 0; l < excludestr.length; l++) {
-            if (atitle.indexOf(excludestr[l]) >= 0) {
+            if (atitle.toLowerCase().indexOf(excludestr[l].toLowerCase()) >= 0) {
                 excludetitle = true;
                 break;
             }
@@ -463,7 +480,7 @@ function generateOutputAfterClick(event) {
     orderedrefs = Object.keys(refs).sort(Intl.Collator().compare);
     if (orderedrefs.length > 0) {
         localStorage.setItem("refs_" + searchStr + '__' + minSize + '_' + maxSize, JSON.stringify(refs));
-    }  
+    }
 
     refswindow = window.open();
     refsdocument = refswindow.document;
@@ -475,8 +492,8 @@ function generateOutputAfterClick(event) {
     refsdocument.write(ahtml);
     orderednewrefs = Object.keys(newrefs).sort(Intl.Collator().compare);
     orderedsearchedrefs = Object.keys(searchedrefs).sort(Intl.Collator().compare);
-    
-    
+
+
 
     for (var ii = 0; ii < orderednewrefs.length; ii++) {
         ititle = orderednewrefs[ii];
@@ -495,7 +512,7 @@ function generateOutputAfterClick(event) {
     refsdocument.write('<h1>Chybejici linky(smazane, nebo zastarale)</h1>');
     var ahtml = '<table cellpadding="5px"><tr><th style="max-width:48px"></th><th style="max-width:85%">nazev</th><th>velikost</th></tr>';
     refsdocument.write(ahtml);
-    
+
 
     for (var ii = 0; ii < orderedsearchedrefs.length; ii++) {
         ititle = orderedsearchedrefs[ii];
@@ -515,7 +532,7 @@ function generateOutputAfterClick(event) {
     refsdocument.write('<h1>vsechny linky</h1>');
     var ahtml = '<table><tr><th>nazev</th><th>velikost</th></tr>';
     refsdocument.write(ahtml);
-    
+
     for (var ii = 0; ii < orderedrefs.length; ii++) {
         ititle = orderedrefs[ii];
         for (var i = 0; i < refs[ititle].length; i++) {
@@ -602,6 +619,18 @@ function pageScroll() {
      } else {
         window.scrollBy(0, ascrollsize);
      }
+    if (!reversed&&false) {
+    res = main.children[0].children[main.children[0].childElementCount - 2].lastElementChild;
+    if (res !== null && res.style.transform != '' && res.style.transform.indexOf('translateY') >= 0) {
+        var trY = parseInt(res.style.transform.replace('translateY(', ''))
+        console.log(trY);
+        if (trY + res.offsetHeight + 100 > main.offsetHeight) {
+            console.log('konec ' + trY + main.offsetHeight);
+            runGenerateOutput();
+            return;
+        }
+    }
+    }
     scrolldelay = setTimeout(pageScroll, ascrolltimeout);
 }
 
